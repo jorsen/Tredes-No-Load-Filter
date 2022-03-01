@@ -1,3 +1,4 @@
+<?php
 // function that runs when shortcode is called
 function archi_job_board()
 {
