@@ -3,7 +3,7 @@
 function archi_job_board()
 {
     ob_start(); ?>
-
+ 
     <style type="text/css">
         .cstm-search {
             max-width: 50%;
