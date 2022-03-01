@@ -1,0 +1,37 @@
+function archi_job_filter(){
+	global $post;?>
+	<div class="cstm-blog">
+		<div class="cstm-search">
+			<?php
+				echo post_filter(
+					get_terms(["taxonomy" => "level"]),
+					"Level"
+				);
+				echo post_filter(
+					get_terms(["taxonomy" => "role_category"]),
+					"Role"
+				);
+				echo post_filter(
+					get_terms(["taxonomy" => "type_category"]),
+					"Type"
+				);
+			?>
+        </div>
+	</div>
+	<?php
+}
+function post_filter($categories, $title){
+	ob_start();?>
+	<div class="post-filter">
+		<h3><?php echo $title ?></h3>
+		<ul class="filter-option"><?php
+			foreach ($categories as $category) {
+				echo '<li><input type="checkbox" id="category-'.$category->term_id.'" name="'.$title.'" value="'.$category->slug.'"><label for="category-'.$category->term_id.'">'.$category->name."</label></li>";
+			}
+			?>
+		</ul>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode('job_filter', 'archi_job_filter');
